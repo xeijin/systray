@@ -222,9 +222,7 @@ func (item *MenuItem) update() {
 
 // delete removes a menu item from the systray menu
 func (item *MenuItem) Delete() {
-	menuItemsLock.Lock()
 	delete(menuItems, item.id)
-	menuItemsLock.Unlock()
 }
 
 
