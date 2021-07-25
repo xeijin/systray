@@ -220,6 +220,14 @@ func (item *MenuItem) update() {
 	addOrUpdateMenuItem(item)
 }
 
+// delete removes a menu item from the systray menu
+func (item *MenuItem) Delete() {
+	menuItemsLock.Lock()
+	delete(menuItems, item.id)
+	menuItemsLock.Unlock()
+}
+
+
 func systrayMenuItemSelected(id uint32) {
 	menuItemsLock.RLock()
 	item, ok := menuItems[id]
